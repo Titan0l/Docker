@@ -1,36 +1,30 @@
-/*==========================
-demo.js - https://github.com/doedje/jquery.soap
-part of the jQuery.soap distribution version: 1.7.3
 
-this file contains the javascript for the jQuery.soap demo
-===========================*/
 
 $(document).ready(function() {
 	$('#test').click(function(e) {
-		// stop the form to be submitted...
+	
 		e.preventDefault();
-		// empty all elements with results and feedback
+		
 		$('#feedbackHeader, #feedback, #soapcall, #requestXML').empty();
-		// gather the SOAPHeader
+
 		var SOAPHeader = $('#SOAPHeader').val();
 		if ($('#SOAPHeaderType').val() == 'json') {
 			if (SOAPHeader !== "") {
 				SOAPHeader = eval("("+SOAPHeader+")");
 			}
 		}
-		// gather the data
+
 		var data = $('#data').val();
 		if ($('#dataType').val() == 'json') {
 			if (data !== "") {
 				data = eval("("+data+")");
 			}
 		}
-		// gather the envAttributes
+	
 		var envAttributes = $('#envAttributes').val();
 		if (envAttributes !== "") {
 			envAttributes = eval("("+envAttributes+")");
 		}
-		// gather the HTTPHeaders
 		var HTTPHeaders = $('#HTTPHeaders').val();
 		if (HTTPHeaders !== "") {
 			HTTPHeaders = eval("("+HTTPHeaders+")");
@@ -85,7 +79,7 @@ $(document).ready(function() {
 			},
 			error: function(SOAPResponse) {
 				$('#feedbackHeader').html('Response: Error!');
-			//	$('#feedback').text(SOAPResponse.toString());
+
 			},
 			statusCode: {
 				404: function() {
@@ -160,7 +154,7 @@ function dom2html(xmldom, tabcount) {
 	}
 	xmlout.push('>');
 	++tabcount;
-	// for (var j in xmldom.childNodes) {
+	
 	for (var j = 0; j < xmldom.childNodes.length; j++) {
 		var child = xmldom.childNodes[j];
 		if (child.nodeType === 1) {
